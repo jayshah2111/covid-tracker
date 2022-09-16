@@ -13,7 +13,23 @@ export const getData = async () => {
         return requiredData;
     }
     catch(error){
-
+      console.log(error);
     }
+}
 
+export const fetchDailyData = async () => {
+  try {
+    const { data } = await axios.get('https://covid19.mathdro.id/api/daily');
+    return data.map(({ confirmed, deaths, reportDate: date }) => ({ confirmed: confirmed.total, deaths: deaths.total, date }));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCountryData = async () => {
+  try{
+    // const res = await
+  } catch(error){
+    console.log(error);
+  }
 }

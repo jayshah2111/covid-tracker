@@ -1,10 +1,15 @@
 import React from "react";
-import './locationPicker.module.css';
+import { NativeSelect, FormControl } from '@mui/material';
+import styles from './locationPicker.module.css';
 
 const LocationPicker = () => {
     return(
         <div>
-            <p>Location Picker</p>
+            <FormControl className={styles.formControl}>
+                <NativeSelect>
+                    <option value="global">Global</option>
+                </NativeSelect>
+            </FormControl>
         </div>
     );
 }
