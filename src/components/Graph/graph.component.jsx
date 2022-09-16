@@ -6,7 +6,7 @@ import styles from './graph.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement );
 
-const Graph = () => {
+const Graph = ({ data, country }) => {
     const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {

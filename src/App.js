@@ -12,6 +12,7 @@ class App extends React.Component {
 
   state = {
     data: {},
+    country: '',
   }
 
   async componentDidMount() {
@@ -19,15 +20,20 @@ class App extends React.Component {
     this.setState({data: dataObtained});
   }
 
+  handleLocationChange = async (country) => {
+    const dataObtained = await getData(country);
+    this.setState({data: dataObtained, country: country});
+  }
+
   render(){
 
-    const { data } = this.state;
+    const { data, country } = this.state;
 
     return(
       <div className={styles.container}>
         <Cards data={data}/> 
-        <LocationPicker />
-        <Graph />
+        <LocationPicker handleLocationChange={this.handleLocationChange}/>
+        <Graph data={data} country={country}/> 
       </div>
     );
   }
